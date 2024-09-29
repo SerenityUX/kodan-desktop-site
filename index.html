@@ -216,6 +216,7 @@
 
             const emailInput = document.getElementById('emailInput');
             const downloadButton = document.getElementById('downloadButton');
+    const downloadLink = 'https://elasticbeanstalk-us-east-2-550315364459.s3.us-east-2.amazonaws.com/Kodan-1.0.0-arm64.dmg';
 
             function validateEmail(email) {
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -263,7 +264,14 @@
                             downloadButton.style.backgroundColor = "#fff";
                             downloadButton.style.color = "#000";
                             downloadButton.style.border = "1px solid #000";
-
+                    // Trigger the download
+                    const a = document.createElement('a');
+                    a.href = downloadLink;
+                    a.download = '';
+                    a.style.display = 'none';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                             downloadButton.disabled = true;
                         } else {
                             console.error('Failed to submit email');
